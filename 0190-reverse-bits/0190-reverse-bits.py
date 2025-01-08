@@ -1,12 +1,9 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
         
-        string =""
-        while n > 0:
-            
-            string = str(n % 2) + string
-            n = n //2
+        string = format(n, 'b')
 
+        print(string)
         
         string = string.zfill(32)
         print(string[::-1])
