@@ -9,18 +9,15 @@ class Solution:
       
 
         def isSame(root1, root2):
-            
-            
             if not root1 and not root2:
                 return True
             
-            if not root1 or not root2:
-                return False
+            if root1 and root2 and root1.val == root2.val:
+                return isSame(root1.left, root2.left) and isSame(root1.right,root2.right)
             
-            if root1.val != root2.val:
-                return False
+            return False
 
-            return isSame(root1.left, root2.left) and isSame(root1.right,root2.right)
+            
         if not root:
             return False
 
