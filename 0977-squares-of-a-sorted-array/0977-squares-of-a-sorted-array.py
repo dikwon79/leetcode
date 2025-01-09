@@ -9,12 +9,13 @@ class Solution:
             leftsq = nums[left] ** 2
             rightsq = nums[right] ** 2
 
-            if leftsq < rightsq:
+            if leftsq > rightsq:
+                result[input_index] = leftsq
+               
+                left +=1
+            else:
                 result[input_index] = rightsq
                 right -=1
-            else:
-                result[input_index] = leftsq
-                left +=1
 
             input_index -=1
         return result
