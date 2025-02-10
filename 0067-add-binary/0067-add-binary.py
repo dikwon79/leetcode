@@ -1,23 +1,20 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        
-        tempA = len(a) - 1
-        tempB = len(b) - 1
-        value = ""
-        ten_digit=0
+        carry = 0
+        result = []
+        len_a = len(a) - 1
+        len_b = len(b) - 1
 
-        while tempA >= 0 or tempB >= 0:
-            firstvalue = int(a[tempA]) if tempA >= 0 else 0
+        while len_a >=0 or len_b >=0 or carry ==1:
+            if len_a >= 0:
+                carry += int(a[len_a])
+                len_a -= 1
+            if len_b >=0:
+                carry += int(b[len_b])
+                len_b -= 1
             
-            secondvalue = int(b[tempB]) if tempB >= 0 else 0
-            one_digit = (ten_digit + firstvalue + secondvalue) %2
-            ten_digit = (ten_digit + firstvalue + secondvalue)//2
-            value = str(one_digit) + value 
-            tempA = tempA - 1
-            tempB = tempB - 1
-
-        if ten_digit > 0:
-            value = str(ten_digit) + value
-
-        return value
-                 
+            result.append(str(carry % 2))
+            carry = carry // 2
+        
+        return "".join(result[::-1])
+        
