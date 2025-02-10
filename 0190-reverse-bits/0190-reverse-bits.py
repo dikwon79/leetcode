@@ -1,9 +1,18 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
+        result = []
+
+        while(n > 0):
+            result.append(str(n % 2))
+            n = n // 2
         
-        result = 0
-        for _ in range(32):
-            bit = n & 1            # Extract the least significant bit
-            result = (result << 1) | bit # Append the bit to the result
-            n >>= 1                # Right-shift n to process the next bit
-        return result
+        print(result)
+        count = 32- len(result)
+
+        for i in range(count):
+            result.append("0")
+
+        answer = "".join(result[::])
+        print(answer)
+
+        return int(answer,2)
