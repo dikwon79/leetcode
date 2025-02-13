@@ -1,9 +1,8 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        count = Counter(nums)
+        result = 0 
 
-        for index, count in count.items():
-            if count == 1:
-                return index
+        for num in nums:
+            result ^= num
         
-        return None
+        return result
