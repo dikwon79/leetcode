@@ -1,10 +1,10 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        ransomNote_dic = Counter(ransomNote)
-        magazine_dic = Counter(magazine)
-
-        for letter in ransomNote:
-            if ransomNote_dic[letter] > magazine_dic[letter]:
+        if len(ransomNote) > len(magazine):
+            return False
+            
+        for c in set(ransomNote):
+            if magazine.count(c) < ransomNote.count(c):
                 return False
-        
+
         return True
