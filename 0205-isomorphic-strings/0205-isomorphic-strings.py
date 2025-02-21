@@ -1,14 +1,13 @@
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        dic = {}
+        dic_s ={}
+        dic_t ={}
 
-        for sc, tc in zip(s,t):
-            if sc in dic:
-                if dic[sc] !=tc:
-                    return False
-            elif tc in dic.values():
+        for i in range(len(s)):
+            if s[i] not in dic_s:
+                dic_s[s[i]] = i
+            if t[i] not in dic_t:
+                dic_t[t[i]] = i
+            if dic_s[s[i]] != dic_t[t[i]]:
                 return False
-            
-            dic[sc] = tc
-        
         return True
