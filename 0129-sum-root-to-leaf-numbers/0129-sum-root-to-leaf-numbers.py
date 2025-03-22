@@ -8,17 +8,20 @@ class Solution:
 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         
-        def dfs(node, sum):
-            
-            if not node:
-                return 0 
+        if not root:
+            return 0
+        total = 0
+        queue = deque([(root, 0)])
 
-            sum = sum * 10 + node.val
+        while(queue):
+            node, current_sum = queue.popleft() 
 
             if not node.left and not node.right:
-                return sum
-
-            return dfs(node.left, sum) + dfs(node.right, sum)
-
-
-        return dfs(root, 0)    
+                total += current_sum + node.val
+            
+            if node.left:
+                queue.append((node.left, (current_sum + node.val) * 10))
+            if node.right:
+                queue.append((node.right,(current_sum + node.val) * 10))
+        
+        return total
