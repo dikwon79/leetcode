@@ -9,7 +9,7 @@ class Solution:
 
         if not root:
             return 0
-            
+
         count = 1
 
         def dfs(node):
@@ -24,7 +24,6 @@ class Solution:
                 count += 1
                 dfs(node.right)
             
-            return None
 
         dfs(root)
 
