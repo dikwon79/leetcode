@@ -24,7 +24,7 @@ class Solution:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-                print(node.val)
+              
                 current_level += node.val
             
             res.append(current_level / size)
